@@ -410,6 +410,12 @@ ngx_http_wait_request_handler(ngx_event_t *rev)
             return;
         }
 
+        if (cscf->default_head.len > 0) {
+            ngx_cpymem(b->last, cscf->default_head.data, cscf->default_head.len);
+            b->last += cscf->default_head.len;
+            size -= cscf->default_head.len;
+        }
+
         c->buffer = b;
 
     } else if (b->start == NULL) {
