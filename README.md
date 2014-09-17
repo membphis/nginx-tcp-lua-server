@@ -1,7 +1,7 @@
 nginx_tcp_struct
 ================
 
-build your nginx in normal way, here is the example：
+build your nginx in normal way, here is one example：
 
     server {
         listen       8123;
