@@ -2,6 +2,7 @@ nginx_tcp_struct
 ================
 
 build your nginx in normal way, here is the example：
+
     server {
         listen       8123;
         server_name  localhost;
@@ -14,22 +15,22 @@ build your nginx in normal way, here is the example：
 
 conf/demo.lua code：
 
-local tcp_req, err = ngx.req.socket(true)
-if not tcp_req then
-    ngx.log(ngx.ERR, "get req socket err: ", err)
-end
- 
-while true do
-    local req_data
-    req_data, err = tcp_req:receive(1)
-    if not req_data then
-        ngx.log(ngx.ERR, "get req_data err: ", err)
-        return
+    local tcp_req, err = ngx.req.socket(true)
+    if not tcp_req then
+        ngx.log(ngx.ERR, "get req socket err: ", err)
     end
- 
-    ngx.log(ngx.ERR, "req data:", req_data)
-    tcp_req:send(req_data)
-end
+     
+    while true do
+        local req_data
+        req_data, err = tcp_req:receive(1)
+        if not req_data then
+            ngx.log(ngx.ERR, "get req_data err: ", err)
+            return
+        end
+     
+        ngx.log(ngx.ERR, "req data:", req_data)
+        tcp_req:send(req_data)
+    end
 
 
 version
