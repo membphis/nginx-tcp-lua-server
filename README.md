@@ -1,7 +1,7 @@
-nginx_tcp_struct
+nginx-tcp-lua-server
 ================
 
-build your nginx in normal way, here is one example：
+build your openresty in normal way, here is one example：
 
     server {
         listen       8123;
@@ -35,7 +35,7 @@ conf/demo.lua code：
 
 version
 ================
-if you need special version, please choose the branch or merge it by yourself.
+if you need special version, please choose the branch or merge it by yourself. Less then 20lines modify with official nginx source, then you'll have a completely nginx lua tcp server.
 
 provide by membphis@gmail.com
 
