@@ -1,0 +1,45 @@
+diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.c nginx-1.7.10_new/src/http/ngx_http_core_module.c
+--- nginx-1.7.10/src/http/ngx_http_core_module.c	2015-03-01 09:58:25.000000000 +0800
++++ nginx-1.7.10_new/src/http/ngx_http_core_module.c	2015-06-18 23:12:10.000000000 +0800
+@@ -297,6 +297,13 @@
+       offsetof(ngx_http_core_srv_conf_t, underscores_in_headers),
+       NULL },
+ 
++    { ngx_string("default_head"),
++      NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_CONF_TAKE1,
++     ngx_conf_set_str_slot,
++      NGX_HTTP_SRV_CONF_OFFSET,
++      offsetof(ngx_http_core_srv_conf_t, default_head),
++      NULL },
++
+     { ngx_string("location"),
+       NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_BLOCK|NGX_CONF_TAKE12,
+       ngx_http_core_location,
+diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.h nginx-1.7.10_new/src/http/ngx_http_core_module.h
+--- nginx-1.7.10/src/http/ngx_http_core_module.h	2015-02-10 22:33:34.000000000 +0800
++++ nginx-1.7.10_new/src/http/ngx_http_core_module.h	2015-06-18 23:12:47.000000000 +0800
+@@ -209,6 +209,8 @@
+ #endif
+ 
+     ngx_http_core_loc_conf_t  **named_locations;
++
++    ngx_str_t     default_head;
+ } ngx_http_core_srv_conf_t;
+ 
+ 
+diff -Naru nginx-1.7.10/src/http/ngx_http_request.c nginx-1.7.10_new/src/http/ngx_http_request.c
+--- nginx-1.7.10/src/http/ngx_http_request.c	2015-03-01 09:58:25.000000000 +0800
++++ nginx-1.7.10_new/src/http/ngx_http_request.c	2015-06-18 23:14:40.000000000 +0800
+@@ -411,6 +411,12 @@
+             return;
+         }
+ 
++        if (cscf->default_head.len > 0) {
++            ngx_cpymem(b->last, cscf->default_head.data, cscf->default_head.len);
++            b->last += cscf->default_head.len;
++            size -= cscf->default_head.len;
++        }
++
+         c->buffer = b;
+ 
+     } else if (b->start == NULL) {
