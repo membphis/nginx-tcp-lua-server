@@ -1,7 +1,7 @@
 nginx-tcp-lua-server
 ================
 
-How to build it(example for openresty-1.7.10.1)
+How to build
 ================
 ```
 1. download the special version from openresty.com
@@ -51,7 +51,7 @@ How to use it
 
 Pay attention
 ================
-Its not a pure nginx tcp server. But is more power if you use ngx-lua with this way. It have great compatibility, and you can use 100% api of nginx-lua-module.
+Its not a pure nginx tcp server. But is more power if you use ngx-lua with this way. It have great compatibility, and you can use 100% api of nginx-lua-module with lastest version.
 
 provide by membphis@gmail.com
 
