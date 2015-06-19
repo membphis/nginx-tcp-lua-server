@@ -1,6 +1,6 @@
-diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.c nginx-1.7.10_default_head/src/http/ngx_http_core_module.c
+diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.c nginx-1.7.10_patch/src/http/ngx_http_core_module.c
 --- nginx-1.7.10/src/http/ngx_http_core_module.c	2015-03-01 09:58:25.000000000 +0800
-+++ nginx-1.7.10_default_head/src/http/ngx_http_core_module.c	2015-06-18 23:12:10.000000000 +0800
++++ nginx-1.7.10_patch/src/http/ngx_http_core_module.c	2015-06-18 23:12:10.000000000 +0800
 @@ -297,6 +297,13 @@
        offsetof(ngx_http_core_srv_conf_t, underscores_in_headers),
        NULL },
@@ -15,9 +15,9 @@ diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.c nginx-1.7.10_default_hea
      { ngx_string("location"),
        NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_BLOCK|NGX_CONF_TAKE12,
        ngx_http_core_location,
-diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.h nginx-1.7.10_default_head/src/http/ngx_http_core_module.h
+diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.h nginx-1.7.10_patch/src/http/ngx_http_core_module.h
 --- nginx-1.7.10/src/http/ngx_http_core_module.h	2015-02-10 22:33:34.000000000 +0800
-+++ nginx-1.7.10_default_head/src/http/ngx_http_core_module.h	2015-06-18 23:12:47.000000000 +0800
++++ nginx-1.7.10_patch/src/http/ngx_http_core_module.h	2015-06-18 23:12:47.000000000 +0800
 @@ -209,6 +209,8 @@
  #endif
  
@@ -27,9 +27,9 @@ diff -Naru nginx-1.7.10/src/http/ngx_http_core_module.h nginx-1.7.10_default_hea
  } ngx_http_core_srv_conf_t;
  
  
-diff -Naru nginx-1.7.10/src/http/ngx_http_request.c nginx-1.7.10_default_head/src/http/ngx_http_request.c
+diff -Naru nginx-1.7.10/src/http/ngx_http_request.c nginx-1.7.10_patch/src/http/ngx_http_request.c
 --- nginx-1.7.10/src/http/ngx_http_request.c	2015-03-01 09:58:25.000000000 +0800
-+++ nginx-1.7.10_default_head/src/http/ngx_http_request.c	2015-06-18 23:14:40.000000000 +0800
++++ nginx-1.7.10_patch/src/http/ngx_http_request.c	2015-06-18 23:14:40.000000000 +0800
 @@ -411,6 +411,12 @@
              return;
          }
