@@ -4,7 +4,8 @@ nginx-tcp-lua-server
 How to build it
 ================
 ```
-1. download the special version from openresty.com .
+1. download the special version from openresty.com
+    eg: wget http://openresty.org/download/ngx_openresty-1.7.10.1.tar.gz
 2. download the special version patch
 3. make and install 
 ```
@@ -42,7 +43,7 @@ Here is a nginx config example：
     }
 ```
 
-Pay atention
+Pay attention
 ================
 Its not a pure nginx tcp server. But is more power if you use ngx-lua with this way. It have great compatibility, and you can use 100% api of nginx-lua-module.
 
